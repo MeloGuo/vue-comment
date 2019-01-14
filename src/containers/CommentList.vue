@@ -1,8 +1,10 @@
 <template>
-  <comment-list
-    :comments="comments"
-    @delete:comment="handleDeleteComment"
-  ></comment-list>
+  <div>
+    <comment-list
+      :comments="comments"
+      @delete:comment="handleDeleteComment"
+    ></comment-list>
+  </div>
 </template>
 
 <script>
@@ -16,14 +18,14 @@ export default {
   computed: mapState({
     comments: state => state.comments
   }),
+  created () {
+    this._loadComments()
+  },
   methods: {
     ...mapMutations({
       deleteComment: DELETE_COMMENT,
       initComments: INIT_COMMENTS
     }),
-    created () {
-      this._loadComments()
-    },
     _loadComments () {
       let comments = window.localStorage.getItem('comments')
       comments = comments ? JSON.parse(comments) : []
@@ -41,4 +43,3 @@ export default {
   }
 }
 </script>
-

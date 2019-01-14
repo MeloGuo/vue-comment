@@ -1,7 +1,7 @@
 <template>
   <div class="comment">
     <div class="comment-user">
-      <span>{{comment.username}}</span>
+      <span>{{comment.username}}:</span>
     </div>
     <p>{{comment.content}}</p>
     <span class="comment-createdtime">
@@ -10,7 +10,7 @@
     <span class="comment-delete" @click="handleDeleteComment">
       删除
     </span>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -26,7 +26,7 @@ export default {
   },
   data () {
     return {
-      timeString: ''
+      timeString: '2323'
     }
   },
   methods: {
@@ -35,6 +35,7 @@ export default {
       this._timer = setInterval(() => {
         this._updateTimeString()
       }, 5000)
+      console.log('xxx')
     },
     beforeDestroy () {
       clearInterval(this._timer)
@@ -52,4 +53,3 @@ export default {
   }
 }
 </script>
-

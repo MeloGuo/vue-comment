@@ -2,8 +2,8 @@
   <div>
     <template v-for="(comment, index) in comments">
       <comment
-        :comment="comment" 
-        :key="index" 
+        :comment="comment"
+        :key="index"
         :index="index"
         @delete:comment="onDeleteComment"></comment>
     </template>

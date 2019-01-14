@@ -21,13 +21,13 @@ export default {
   computed: mapState({
     comments: state => state.comments
   }),
+  created () {
+    this._loadUsername()
+  },
   methods: {
     ...mapMutations({
       addComment: ADD_COMMENT
     }),
-    created () {
-      this._loadUsername()
-    },
     _loadUsername () {
       const username = window.localStorage.getItem('username')
       if (username) {
@@ -54,4 +54,3 @@ export default {
   }
 }
 </script>
-

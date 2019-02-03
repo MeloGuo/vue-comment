@@ -29,17 +29,16 @@ export default {
       timeString: '2323'
     }
   },
-  methods: {
-    created () {
+  created () {
+    this._updateTimeString()
+    this._timer = setInterval(() => {
       this._updateTimeString()
-      this._timer = setInterval(() => {
-        this._updateTimeString()
-      }, 5000)
-      console.log('xxx')
-    },
-    beforeDestroy () {
-      clearInterval(this._timer)
-    },
+    }, 5000)
+  },
+  beforeDestroy () {
+    clearInterval(this._timer)
+  },
+  methods: {
     _updateTimeString () {
       const comment = this.comment
       const duration = (+Date.now() - comment.createdTime) / 1000

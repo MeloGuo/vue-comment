@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-import { ADD_COMMENT } from '../stores/store'
+import { mapState, mapMutations, mapActions } from 'vuex'
+import { ADD_COMMENT, ADD_COMMENT_ASYNC } from '../stores/store'
 import CommentInput from '../components/CommentInput.vue'
 
 export default {
@@ -27,6 +27,9 @@ export default {
   methods: {
     ...mapMutations({
       addComment: ADD_COMMENT
+    }),
+    ...mapActions({
+      addCommentAsync: ADD_COMMENT_ASYNC
     }),
     _loadUsername () {
       const username = window.localStorage.getItem('username')
@@ -49,7 +52,8 @@ export default {
       }
       const newComments = [...this.comments, comment]
       window.localStorage.setItem('comments', JSON.stringify(newComments))
-      this.addComment({ comment }) // this.$store.commit(ADD_COMMENT, { comment })
+      // this.addComment({ comment }) // this.$store.commit(ADD_COMMENT, { comment })
+      this.addCommentAsync({ comment })
     }
   }
 }

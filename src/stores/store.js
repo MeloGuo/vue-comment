@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export const INIT_COMMENTS = 'INIT_COMMENTS'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const ADD_COMMENT_ASYNC = 'ADD_COMMENT_ASYNC'
 
 export default new Vuex.Store({
   state: {
@@ -27,6 +28,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
-
+    [ADD_COMMENT_ASYNC] ({ commit }, { comment }) {
+      // 模拟异步请求
+      console.log(comment)
+      setTimeout(() => {
+        commit(ADD_COMMENT, { comment })
+      }, 1000)
+    }
   }
 })
